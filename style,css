@@ -1,167 +1,372 @@
+/* ==========================================================================
+   CONFIGURAÇÕES GERAIS E VARIÁVEIS
+   ========================================================================== */
 :root {
     --bg-principal: #0b0f19;
     --bg-cards: #151c2c;
+    --bg-hover: #1e293b;
     --cor-neon: #00e676;
-    --cor-texto: #ffffff;
-    --cor-suporte: #8a99ad;
+    --cor-azul: #00b0ff;
+    --cor-alerta: #ffeb3b;
+    --cor-texto-claro: #ffffff;
+    --cor-texto-mutado: #8a99ad;
+    --borda-padrao: 1px solid #222e45;
+    --transicao: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 body {
-    font-family: 'Segoe UI', system-ui, sans-serif;
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
     background-color: var(--bg-principal);
-    color: var(--cor-texto);
-    margin: 0;
+    color: var(--cor-texto-claro);
     display: flex;
     min-height: 100vh;
+    overflow-x: hidden;
 }
 
-/* Menu Lateral */
+/* ==========================================================================
+   BARRA LATERAL (SIDEBAR)
+   ========================================================================== */
 .sidebar {
-    width: 250px;
+    width: 260px;
     background-color: var(--bg-cards);
-    padding: 30px 20px;
-    border-right: 1px solid #222e45;
+    padding: 40px 24px;
+    border-right: var(--borda-padrao);
+    display: flex;
+    flex-direction: column;
+    z-index: 10;
 }
 
 .sidebar h2 {
     color: var(--cor-neon);
-    margin: 0;
-    font-size: 1.5rem;
+    font-size: 1.4rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
 .subtitulo {
-    color: var(--cor-suporte);
-    font-size: 0.8rem;
-    margin-top: 5px;
-    margin-bottom: 30px;
+    color: var(--cor-texto-mutado);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 6px;
+    margin-bottom: 40px;
+}
+
+.sidebar nav {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
 }
 
 .sidebar nav a {
-    display: block;
-    color: var(--cor-texto);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: var(--cor-texto-claro);
     text-decoration: none;
-    padding: 12px;
-    margin-bottom: 10px;
-    border-radius: 8px;
-    transition: 0.3s;
+    padding: 14px 16px;
+    border-radius: 10px;
+    font-weight: 500;
+    transition: var(--transicao);
 }
 
-.sidebar nav a:hover, .sidebar nav a.active {
-    background-color: rgba(0, 230, 118, 0.15);
+.sidebar nav a i {
+    font-size: 1.1rem;
+    width: 20px;
+    text-align: center;
+}
+
+.sidebar nav a:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+    transform: translateX(4px);
+}
+
+.sidebar nav a.active {
+    background: linear-gradient(90deg, rgba(0, 230, 118, 0.15) 0%, rgba(0, 230, 118, 0.02) 100%);
     color: var(--cor-neon);
+    border-left: 3px solid var(--cor-neon);
+    font-weight: 600;
 }
 
-/* Área de Conteúdo */
+/* ==========================================================================
+   PAINEL DE CONTEÚDO PRINCIPAL
+   ========================================================================== */
 .conteudo-principal {
     flex: 1;
     padding: 40px;
+    max-width: 1400px;
+    margin: 0 auto;
+    width: 100%;
 }
 
+/* Cabeçalho */
 header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 40px;
+    border-bottom: var(--borda-padrao);
+    padding-bottom: 20px;
 }
 
-header h1 span {
-    font-size: 1rem;
+.boas-vindas h1 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 6px;
+}
+
+.boas-vindas h1 span {
+    font-size: 0.85rem;
     background: var(--cor-neon);
     color: #000;
-    padding: 2px 8px;
-    border-radius: 5px;
+    padding: 3px 8px;
+    border-radius: 6px;
+    vertical-align: middle;
+    margin-left: 10px;
+    font-weight: 800;
+}
+
+.boas-vindas p {
+    color: var(--cor-texto-mutado);
+    font-size: 1rem;
 }
 
 .badge-agrinho {
-    background: linear-gradient(45deg, #00e676, #00b0ff);
-    color: #000;
-    font-weight: bold;
-    padding: 10px 20px;
-    border-radius: 30px;
-    box-shadow: 0 4px 15px rgba(0, 230, 118, 0.3);
+    background: linear-gradient(135deg, var(--cor-neon), var(--cor-azul));
+    color: #0b0f19;
+    font-weight: 700;
+    padding: 12px 24px;
+    border-radius: 50px;
+    box-shadow: 0 4px 20px rgba(0, 230, 118, 0.25);
+    font-size: 0.85rem;
+    letter-spacing: 0.5px;
 }
 
-/* Grid de Cards */
+/* ==========================================================================
+   GRID DE CARDS (MÉTRICAS)
+   ========================================================================== */
 .dashboard-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 25px;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
     margin-bottom: 40px;
 }
 
 .card-neon {
     background-color: var(--bg-cards);
-    border-radius: 16px;
-    padding: 25px;
-    border: 1px solid #222e45;
+    border-radius: 20px;
+    padding: 30px;
+    border: var(--borda-padrao);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     position: relative;
-    overflow: hidden;
-    transition: 0.3s;
+    transition: var(--transicao);
+}
+
+.card-neon::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+    box-shadow: 0 0 30px rgba(0, 230, 118, 0);
+    transition: var(--transicao);
+    pointer-events: none;
 }
 
 .card-neon:hover {
     transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0, 230, 118, 0.1);
+    border-color: rgba(0, 230, 118, 0.3);
+}
+
+.card-neon:hover::before {
+    box-shadow: 0 12px 30px rgba(0, 230, 118, 0.06);
 }
 
 .card-cabecalho {
     display: flex;
     justify-content: space-between;
-    color: var(--cor-suporte);
+    align-items: center;
 }
 
-.card-cabecalho h3 { margin: 0; font-size: 1rem; }
-.icon-card { font-size: 1.3rem; color: var(--cor-neon); }
+.card-cabecalho h3 {
+    color: var(--cor-texto-mutado);
+    font-size: 0.95rem;
+    font-weight: 600;
+}
+
+.icon-card {
+    font-size: 1.4rem;
+    color: var(--cor-neon);
+    background: rgba(0, 230, 118, 0.08);
+    width: 42px;
+    height: 42px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.temperatura .icon-card {
+    color: var(--cor-azul);
+    background: rgba(0, 176, 255, 0.08);
+}
 
 .valor {
-    font-size: 3rem;
-    font-weight: bold;
-    margin: 20px 0 10px 0;
+    font-size: 3.2rem;
+    font-weight: 700;
+    letter-spacing: -1px;
+    margin: 24px 0 14px 0;
 }
 
+/* Barras de Indicadores Internos */
 .barra-progresso {
-    background-color: #222e45;
-    height: 6px;
-    border-radius: 10px;
-    margin-bottom: 15px;
+    background-color: #1e293b;
+    height: 8px;
+    border-radius: 20px;
+    margin-bottom: 20px;
+    overflow: hidden;
 }
 
 .progresso-cheio {
-    background-color: var(--cor-neon);
+    background: linear-gradient(90deg, #00b0ff, var(--cor-neon));
     height: 100%;
-    border-radius: 10px;
+    border-radius: 20px;
+    transition: width 1s ease-in-out;
 }
 
 .status-tag {
-    font-size: 0.8rem;
-    padding: 4px 10px;
-    border-radius: 20px;
-    font-weight: bold;
+    align-self: flex-start;
+    font-size: 0.75rem;
+    padding: 6px 14px;
+    border-radius: 50px;
+    font-weight: 600;
 }
 
-.bom { background: rgba(0, 230, 118, 0.1); color: var(--cor-neon); }
-.destaque { background: rgba(0, 176, 255, 0.1); color: #00b0ff; }
+.bom {
+    background: rgba(0, 230, 118, 0.08);
+    color: var(--cor-neon);
+    border: 1px solid rgba(0, 230, 118, 0.15);
+}
 
-/* Seção Inferior */
+.destaque {
+    background: rgba(0, 176, 255, 0.08);
+    color: var(--cor-azul);
+    border: 1px solid rgba(0, 176, 255, 0.15);
+}
+
+/* ==========================================================================
+   SEÇÃO INFERIOR (GRÁFICOS E INFOS)
+   ========================================================================== */
 .secao-inferior {
     display: grid;
     grid-template-columns: 2fr 1fr;
-    gap: 25px;
+    gap: 30px;
 }
 
 .grafico-box, .acoes-box {
     background-color: var(--bg-cards);
-    border-radius: 16px;
-    padding: 25px;
-    border: 1px solid #222e45;
+    border-radius: 20px;
+    padding: 30px;
+    border: var(--borda-padrao);
 }
 
-/* Botão de Comando */
+.grafico-box h3, .acoes-box h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 25px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.grafico-box h3 i { color: var(--cor-azul); }
+.acoes-box h3 i { color: var(--cor-neon); }
+
+/* Interface de Interação (Botões) */
 .btn-comando {
     width: 100%;
-    background: #222e45;
-    color: #fff;
+    background-color: #1e293b;
+    color: var(--cor-texto-claro);
+    border: 1px solid #2e3f5b;
+    padding: 18px;
+    border-radius: 14px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    transition: var(--transicao);
+}
+
+.btn-comando:hover {
+    background-color: #28374f;
+    border-color: #42597d;
+}
+
+.btn-comando.ativo {
+    background: linear-gradient(135deg, var(--cor-neon), #00b248);
+    color: #000;
     border: none;
-    padding: 15px;
-    border-radius: 10px;
-    font-size: 1rem
+    box-shadow: 0 0 20px rgba(0, 230, 118, 0.35);
+}
+
+/* Caixa informativa de IA simulada */
+.alerta-ia {
+    background: rgba(255, 235, 59, 0.02);
+    border-left: 4px solid var(--cor-alerta);
+    padding: 20px;
+    border-radius: 8px;
+    margin-top: 25px;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: #e2e8f0;
+}
+
+.alerta-ia strong {
+    color: var(--cor-alerta);
+    display: block;
+    margin-bottom: 5px;
+}
+
+/* ==========================================================================
+   RESPONSIVIDADE (MEDIA QUERIES)
+   ========================================================================== */
+@media (max-width: 1100px) {
+    .secao-inferior {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+        flex-direction: column;
+    }
+    .sidebar {
+        width: 100%;
+        border-right: none;
+        border-bottom: var(--borda-padrao);
+        padding: 20px;
+    }
+    .conteudo-principal {
+        padding: 20px;
+    }
+    header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+    }
+}
