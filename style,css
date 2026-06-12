@@ -1,63 +1,167 @@
+:root {
+    --bg-principal: #0b0f19;
+    --bg-cards: #151c2c;
+    --cor-neon: #00e676;
+    --cor-texto: #ffffff;
+    --cor-suporte: #8a99ad;
+}
+
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #f4f7f5;
-    color: #333;
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    background-color: var(--bg-principal);
+    color: var(--cor-texto);
     margin: 0;
-    padding: 20px;
+    display: flex;
+    min-height: 100vh;
+}
+
+/* Menu Lateral */
+.sidebar {
+    width: 250px;
+    background-color: var(--bg-cards);
+    padding: 30px 20px;
+    border-right: 1px solid #222e45;
+}
+
+.sidebar h2 {
+    color: var(--cor-neon);
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+.subtitulo {
+    color: var(--cor-suporte);
+    font-size: 0.8rem;
+    margin-top: 5px;
+    margin-bottom: 30px;
+}
+
+.sidebar nav a {
+    display: block;
+    color: var(--cor-texto);
+    text-decoration: none;
+    padding: 12px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    transition: 0.3s;
+}
+
+.sidebar nav a:hover, .sidebar nav a.active {
+    background-color: rgba(0, 230, 118, 0.15);
+    color: var(--cor-neon);
+}
+
+/* Área de Conteúdo */
+.conteudo-principal {
+    flex: 1;
+    padding: 40px;
 }
 
 header {
-    text-align: center;
-    margin-bottom: 40px;
-    color: #2e7d32; /* Verde sustentável */
-}
-
-.dashboard {
     display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-    gap: 20px;
-    max-width: 1200px;
-    margin: 0 auto 40px auto;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
 }
 
-.card {
-    background: #fff;
-    border-radius: 12px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.05);
-    padding: 20px;
-    width: 250px;
-    text-align: center;
-    border-top: 5px solid #4caf50;
+header h1 span {
+    font-size: 1rem;
+    background: var(--cor-neon);
+    color: #000;
+    padding: 2px 8px;
+    border-radius: 5px;
 }
+
+.badge-agrinho {
+    background: linear-gradient(45deg, #00e676, #00b0ff);
+    color: #000;
+    font-weight: bold;
+    padding: 10px 20px;
+    border-radius: 30px;
+    box-shadow: 0 4px 15px rgba(0, 230, 118, 0.3);
+}
+
+/* Grid de Cards */
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+    margin-bottom: 40px;
+}
+
+.card-neon {
+    background-color: var(--bg-cards);
+    border-radius: 16px;
+    padding: 25px;
+    border: 1px solid #222e45;
+    position: relative;
+    overflow: hidden;
+    transition: 0.3s;
+}
+
+.card-neon:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 230, 118, 0.1);
+}
+
+.card-cabecalho {
+    display: flex;
+    justify-content: space-between;
+    color: var(--cor-suporte);
+}
+
+.card-cabecalho h3 { margin: 0; font-size: 1rem; }
+.icon-card { font-size: 1.3rem; color: var(--cor-neon); }
 
 .valor {
-    font-size: 2.5rem;
+    font-size: 3rem;
     font-weight: bold;
-    margin: 15px 0;
-    color: #1b5e20;
+    margin: 20px 0 10px 0;
 }
 
-.status {
-    padding: 5px 10px;
+.barra-progresso {
+    background-color: #222e45;
+    height: 6px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+.progresso-cheio {
+    background-color: var(--cor-neon);
+    height: 100%;
+    border-radius: 10px;
+}
+
+.status-tag {
+    font-size: 0.8rem;
+    padding: 4px 10px;
     border-radius: 20px;
-    font-size: 0.85rem;
     font-weight: bold;
 }
 
-.ideal { background-color: #e8f5e9; color: #2e7d32; }
-.destaque { background-color: #e3f2fd; color: #1565c0; }
+.bom { background: rgba(0, 230, 118, 0.1); color: var(--cor-neon); }
+.destaque { background: rgba(0, 176, 255, 0.1); color: #00b0ff; }
 
-.grafico-container {
-    max-width: 800px;
-    margin: 0 auto;
-    background: #fff;
-    padding: 20px;
-    border-radius: 12px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+/* Seção Inferior */
+.secao-inferior {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 25px;
 }
 
-.grafico-container h2 {
-    text-align: center;
-    color: #2e7d32;
+.grafico-box, .acoes-box {
+    background-color: var(--bg-cards);
+    border-radius: 16px;
+    padding: 25px;
+    border: 1px solid #222e45;
 }
+
+/* Botão de Comando */
+.btn-comando {
+    width: 100%;
+    background: #222e45;
+    color: #fff;
+    border: none;
+    padding: 15px;
+    border-radius: 10px;
+    font-size: 1rem
