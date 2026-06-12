@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agrinho 2026 - EcoHorta Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+    <header>
+        <h1>🌱 EcoHorta Digital</h1>
+        <p>Monitoramento sustentável em tempo real para o Agrinho 2026</p>
+    </header>
+
+    <main class="dashboard">
+        <div class="card">
+            <h3>Umidade do Solo</h3>
+            <p class="valor" id="umidade">65%</p>
+            <span class="status ideal">Status: Ideal</span>
+        </div>
+
+        <div class="card">
+            <h3>Temperatura</h3>
+            <p class="valor" id="temperatura">24°C</p>
+            <span class="status ideal">Status: Estável</span>
+        </div>
+
+        <div class="card">
+            <h3>Água Economizada</h3>
+            <p class="valor" id="agua">120L</p>
+            <span class="status destaque">Meta Mensal: 80%</span>
+        </div>
+    </main>
+
+    <section class="grafico-container">
+        <h2>Consumo de Água Semanal</h2>
+        <canvas id="graficoConsumo"></canvas>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>
