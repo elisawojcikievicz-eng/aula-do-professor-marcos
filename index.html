@@ -3,81 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Agrinho 2026 - Smart EcoHorta</title>
+    <title>AgroJovem Connect - Agrinho 2026</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
 
-    <div class="sidebar">
-        <h2><i class="fa-solid fa-leaf"></i> Agrinho 2026</h2>
-        <p class="subtitulo">Tecnologia no Campo</p>
+    <header class="navbar">
+        <div class="logo">🌱 AgroJovem</div>
         <nav>
-            <a href="#" class="active"><i class="fa-solid fa-chart-pie"></i> Dashboard</a>
-            <a href="#"><i class="fa-solid fa-droplet"></i> Irrigação</a>
-            <a href="#"><i class="fa-solid fa-seedling"></i> Minhas Culturas</a>
+            <ul>
+                <li><a href="#inicio">Início</a></li>
+                <li><a href="#produtores">Produtores</a></li>
+                <li><a href="#rastreio">Rastreabilidade</a></li>
+            </ul>
         </nav>
-    </div>
+    </header>
 
-    <div class="conteudo-principal">
-        <header>
-            <div class="boas-vindas">
-                <h1>Smart EcoHorta <span>v2.0</span></h1>
-                <p>Gestão de precisão e sustentabilidade automatizada.</p>
+    <section id="inicio" class="hero">
+        <h1>Conectando o campo à sua mesa com tecnologia.</h1>
+        <p>Apoie a agricultura familiar e saiba exatamente de onde vem o seu alimento.</p>
+        <button class="btn-principal">Explorar Alimentos</button>
+    </section>
+
+    <section id="rastreio" class="features">
+        <h2>Rastreabilidade Inteligente</h2>
+        <div class="cards-container">
+            <div class="card">
+                <h3>Origem Garantida</h3>
+                <p>Veja a história da família que cultivou seu alimento através de QR Codes.</p>
             </div>
-            <div class="badge-agrinho">PROJETO CATEGORIA FRONT-END</div>
-        </header>
-
-        <main class="dashboard-grid">
-            <div class="card-neon umidade">
-                <div class="card-cabecalho">
-                    <h3>Umidade do Solo</h3>
-                    <i class="fa-solid fa-droplet icon-card"></i>
-                </div>
-                <p class="valor" id="umidade">68%</p>
-                <div class="barra-progresso"><div class="progresso-cheio" style="width: 68%;"></div></div>
-                <span class="status-tag bom">Status: Excelente</span>
+            <div class="card">
+                <h3>Sustentabilidade</h3>
+                <p>Acompanhe o uso consciente da água e solo em cada colheita.</p>
             </div>
+        </div>
+    </section>
 
-            <div class="card-neon temperatura">
-                <div class="card-cabecalho">
-                    <h3>Temperatura Interna</h3>
-                    <i class="fa-solid fa-temperature-half icon-card"></i>
-                </div>
-                <p class="valor" id="temperatura">24.5°C</p>
-                <div class="barra-progresso"><div class="progresso-cheio" style="width: 55%; background: #ff9800;"></div></div>
-                <span class="status-tag bom">Status: Estável</span>
-            </div>
+    <footer>
+        <p>&copy; 2026 AgroJovem - Desenvolvido para o Concurso Agrinho</p>
+    </footer>
 
-            <div class="card-neon economia">
-                <div class="card-cabecalho">
-                    <h3>Água Economizada</h3>
-                    <i class="fa-solid fa-hand-holding-droplet icon-card"></i>
-                </div>
-                <p class="valor">340 Litros</p>
-                <span class="status-tag destaque"><i class="fa-solid fa-star"></i> Recorde Semanal</span>
-            </div>
-        </main>
-
-        <section class="secao-inferior">
-            <div class="grafico-box">
-                <h3><i class="fa-solid fa-chart-line"></i> Eficiência de Rega vs Desperdício</h3>
-                <canvas id="graficoAvancado"></canvas>
-            </div>
-
-            <div class="acoes-box">
-                <h3><i class="fa-solid fa-gears"></i> Comandos do Sistema</h3>
-                <button class="btn-comando" id="btnIrrigacao" onclick="alternarIrrigacao()">
-                    <i class="fa-solid fa-power-off"></i> Ligar Irrigação Automatizada
-                </button>
-                <div class="alerta-ia">
-                    <p><strong><i class="fa-solid fa-wand-magic-sparkles"></i> Insight da IA:</strong> O solo atingirá o nível crítico de umidade em 4 horas. Recomendado agendar rega noturna para evitar evaporação.</p>
-                </div>
-            </div>
-        </section>
-    </div>
-
-    <script src="script.js"></script>
 </body>
 </html>
